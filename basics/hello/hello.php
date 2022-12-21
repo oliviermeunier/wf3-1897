@@ -1,5 +1,7 @@
 <?php 
 
+// Documentation : php.net
+
 // Variables : pas de déclaration, le nom commence par le signe $
 $firstname = 'Alfred';
 
@@ -16,6 +18,13 @@ $hello = "Hello $firstname"; // avec les double "" je peux insérer directement 
 $message = 'Hello ' . $firstname; // Opérateur de concaténation : . 
 
 $length = strlen($message); // Récupérer la longueur d'une chaîne de caractères
+
+// Nombres : entiers (int) et les flottants (float) 
+// Opérateurs arithmétiques : +-/*%
+// Opérateurs d'incrémentation : ++ --
+
+
+// Booléen (bool) : true / false
 
 // Debugger une variable en PHP
 var_dump($length);
@@ -97,15 +106,67 @@ for ($i = 0; $i < count($persons) ; $i++) {
 }
 
 // foreach (l'équivalent de la boucle for...of en JavaScript)
-foreach ($persons as $person) {
-    echo '<p>'.$person.'</p>';
+foreach ($persons as $index => $person) {
+    echo '<p>Indice n°'.$index. ' : ' .$person.'</p>';
 }
 
 
+// Tableaux associatifs 
+// -> les valeurs ne sont pas associés à un indice numérique mais à une chaîne de caractères (clé)
+$recettes = [
+    // CLE => VALEUR
+    'couscous' => 'Ma recette de couscous',
+    'tajine' => 'Ma super recette de tajine'
+];
+
+$recettes['taboulé'] = 'Ma super recette de taboulé';
+
+$customer = [
+    'firstname' => 'Alfred',
+    'lastname' => 'Dupont',
+    'email' => 'ad@gmail.com',
+    'phone' => '0754218495'
+];
+
+echo $customer['email'] . '<br>';
+
+foreach ($customer as $key => $value) {
+    echo "<p>$key: $value</p>";
+}
+
+// Imbrication de tableaux
+$customers = [
+    [
+        'firstname' => 'Alfred',
+        'lastname' => 'Dupont',
+        'email' => 'ad@gmail.com',
+        'phone' => '0754218495'
+    ],
+    [
+        'firstname' => 'Sylvie',
+        'lastname' => 'Durant',
+        'email' => 'sd@gmail.com',
+        'phone' => '0695847432'
+    ]
+];
+
+foreach ($customers as $c) {
+    echo '<p>'.$c['firstname'].'</p>';
+}
 
 // Fonctions
 
+// Définition de la fonction sayHello
+function sayHello(string $name = 'world'): string // : string -> typage de la valeur de retour 
+{
+    $result = '<p>Hello '.$name.' ! :)</p>';
+    return $result; // résultat de la fonction (l'exécution s'arrête)
+}
 
+// Exécution de la fonction sayHello
+echo sayHello('Alfred'); // Hello Alfred !
+$message = sayHello('Sarah'); // Hello Sarah !
+echo sayHello(); // Hello world !
 
 ?>
 
