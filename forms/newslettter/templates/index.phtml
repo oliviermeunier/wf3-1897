@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <form action="index.php" method="POST">
+
+            <!-- Affichage du message d'erreur le cas échéant -->
+            <?php if ($error != null): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($error);?></p>
+            <?php endif; ?>
+
+            <fieldset>
+                <legend>Abonnez-vous à notre newsletter</legend>
+                <div>
+                    <label for="email">Votre email</label>
+                    <input type="text" id="email" name="email" placeholder="toto@toto.com">
+                </div>
+                <input type="submit" value="Valider">
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
