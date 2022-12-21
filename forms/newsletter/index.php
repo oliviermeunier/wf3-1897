@@ -1,5 +1,18 @@
 <?php 
 
+
+/**
+ * Vérifie si un email existe dans le tableau d'abonnés
+ * @param string $email L'email à vérifier
+ * @param array $subscribers Le tableau d'abonnés
+ * @return bool 
+ */
+function emailExists(string $email, array $subscribers): bool 
+{
+    return in_array($email, $subscribers);
+}
+
+
 // Initialisations
 const FILENAME = 'subscribers.json';
 $error = null;
@@ -31,7 +44,7 @@ if (!empty($_POST)) {
     }
 
     // Vérification de l'existance de l'email dans le tableau d'abonnés
-    if (in_array($email, $subscribers)) {
+    if (emailExists($email, $subscribers)) {
         $error = 'Vous êtes déjà abonné à la newsletter !';
     }
 
