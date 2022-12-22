@@ -20,7 +20,7 @@
                 <legend>Abonnez-vous à notre newsletter</legend>
                 <div class="mb-3">
                     <label for="email">Votre email</label>
-                    <input class="form-control" type="text" id="email" name="email" placeholder="toto@toto.com">
+                    <input value="<?=htmlspecialchars($email);?>" class="form-control" type="text" id="email" name="email" placeholder="toto@toto.com">
                 </div>
                 <input class="btn btn-primary" type="submit" value="Valider">
             </fieldset>
