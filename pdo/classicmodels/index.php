@@ -8,7 +8,8 @@ $dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';charset=utf8;port=3306';
 $user = DB_USER;
 $password = DB_PASS;
 $options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Mode de gestion des erreurs SQL
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Mode de gestion des erreurs SQL
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Mode de récupération des résultats par défaut : tableaux associatifs
 ];
 
 /**
@@ -42,6 +43,23 @@ $customers = $pdoStatement->fetchAll(); // 3. Récupérer les résultats de la r
  * Si pas de risque on peut faire un query() à la place du prepare() et du execute()
  */
 // $pdoStatement = $pdo->query($sql);
+
+
+/**
+ * Exemple 2 : sélection d'UN SEUL customer à partir de son id
+ */
+$customerNumber = 119;
+
+$sql = 'SELECT * 
+        FROM customers
+        WHERE customerNumber = ?';
+
+/** @var PDOStatement $pdoStatement */
+$pdoStatement = $pdo->prepare($sql); // 1. préparation de la requête
+$pdoStatement->execute([$customerNumber]); // 2. Exécution de la requête
+$customer119 = $pdoStatement->fetch(); // 3. Récupérer les résultats de la requête
+
+var_dump($customer119);
 
 // Affichage : inclusion du fichier de template
 include 'index.phtml';

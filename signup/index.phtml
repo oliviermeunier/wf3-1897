@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de création de compte</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="mt-5">
+        <h1 class="text-center">Formulaire d'inscription</h1>
+    </header>
+    <main class="d-flex justify-content-center">
+        <form action="index.php" method="POST" class="col-3">
+            <fieldset>
+                <legend>Créez votre compte</legend>
+                <div class="mb-3">
+                    <label for="firstname">Prénom</label>
+                    <input class="form-control" type="text" name="firstname" id="firstname" value="<?=htmlspecialchars($firstname);?>">
+                    <?php if (isset($errors['firstname'])): ?>
+                        <p class="alert alert-danger"><?=htmlspecialchars($errors['firstname']);?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="mb-3">
+                    <label for="lastname">Nom</label>
+                    <input class="form-control" type="text" name="lastname" id="lastname" value="<?=htmlspecialchars($lastname);?>">
+                    <?php if (isset($errors['lastname'])): ?>
+                        <p class="alert alert-danger"><?=htmlspecialchars($errors['lastname']);?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="text" name="email" id="email" value="<?=htmlspecialchars($email);?>">
+                    <?php if (isset($errors['email'])): ?>
+                        <p class="alert alert-danger"><?=htmlspecialchars($errors['email']);?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="mb-3">
+                    <label for="password">Mot de passe</label>
+                    <input class="form-control" type="password" name="password" id="password">
+                    <?php if (isset($errors['password'])): ?>
+                        <p class="alert alert-danger"><?=htmlspecialchars($errors['password']);?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="mb-3">
+                    <label for="password-confirm">Mot de passe (confirmation)</label>
+                    <input class="form-control" type="password" name="password-confirm" id="password-confirm">
+                    <?php if (isset($errors['password-confirm'])): ?>
+                        <p class="alert alert-danger"><?=htmlspecialchars($errors['password-confirm']);?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="mb-3 form-check">
+                    <input <?=$isSubscribed?'checked':''?> class="form-check-input" type="checkbox" name="is-subscribed" id="is-subscribed">
+                    <label for="is-subscribed" class="form-check-label">Je m'inscris à la newsletter</label>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Valider">
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
