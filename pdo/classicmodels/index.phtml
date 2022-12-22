@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <?php foreach($customers as $customer): ?>
+            <tr>
+                <td><?=htmlspecialchars($customer['customerName']);?></td>
+                <td><?=htmlspecialchars($customer['phone']);?></td>
+                <td><?=htmlspecialchars($customer['city']);?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</body>
+</html>
