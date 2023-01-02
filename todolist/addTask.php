@@ -1,0 +1,76 @@
+<?php 
+
+// Inclusion des dépendances
+require 'config.php';
+require 'functions.php';
+
+
+// Connexion à la base de données
+$pdo = getPDOConnection();
+
+// Initialisations
+$errors = []; // Tableau qui contiendra les erreurs
+
+// Création de la date du jour
+$today = date('Y-m-d');
+
+// Variables qui vont permettre de réécrire les valeurs dans le formulaire
+// en cas d'erreur de l'internaute
+$title = '';
+$description = '';
+$priority = 1;
+$deadline = $today;
+$isDone = 0;
+
+// Si le formulaire est soumis...
+if (!empty($_POST)) {
+
+    // On récupère les données du formulaire
+    $title = trim($_POST['title']);
+    $description = trim($_POST['description']);
+    $priority = $_POST['priority'];
+    $deadline = $_POST['deadline'];
+
+    // @TODO gérer quand pas de date 
+
+    // Validation des données
+    if (!$title) {
+        $errors['title'] = 'Le champ "titre" est obligatoire';
+    }
+
+    /**
+     * @TODO valider la priorité :  
+     * - est-ce qu'on récupère un champ 'priority' ?
+     * - est-ce que c'est un entier ? 
+     * - est-ce que cet entier correspond bien à une priorité dans la BDD ?
+     */ 
+
+    if ($deadline < $today) {
+        $errors['deadline'] = 'La deadline doit être dans le futur';
+    }
+
+    // Si pas d'erreurs...
+    if (empty($errors)) {
+
+        // Insertion des données dans la base de données
+        $sql = 'INSERT INTO task 
+                (title, description, createdAt, isDone, deadline, priority_id)
+                VALUES (?,?,NOW(),?,?,?)';
+
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute([$title, $description, $isDone, $deadline, $priority]);
+
+        // Redirection 
+        header('Location: index.php');
+        exit;
+    }
+}
+
+// Sélection des priorités
+$sql = 'SELECT * FROM priority';
+$pdoStatement = $pdo->prepare($sql);
+$pdoStatement->execute();
+$priorities = $pdoStatement->fetchAll();
+
+// Affichage du formulaire : inclusion du fichier de template
+include 'addTask.phtml';
