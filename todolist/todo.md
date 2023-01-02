@@ -1,6 +1,7 @@
 #Todolist de la todolist :)
 
 - page d'accueil avec la liste des tâches
+- remplir le formulaire en cas d'erreur
 - voir les sessions
 - ajouter un message flash lors de la création d'une tâche
 - créer des fonctions génériques pour exécuter des requêtes SQL

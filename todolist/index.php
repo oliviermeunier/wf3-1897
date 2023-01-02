@@ -1,3 +1,15 @@
 <?php 
 
-echo 'LISTE DES TACHES';
+
+// Inclusion des dépendances
+
+
+
+
+// Sélections de la liste des tâches
+
+
+
+
+// Affichage : inclusion du template
+include 'index.phtml';

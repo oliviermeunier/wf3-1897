@@ -4,7 +4,6 @@
 require 'config.php';
 require 'functions.php';
 
-
 // Connexion à la base de données
 $pdo = getPDOConnection();
 
@@ -50,13 +49,8 @@ if (!empty($_POST)) {
     // Si pas d'erreurs...
     if (empty($errors)) {
 
-        // Insertion des données dans la base de données
-        $sql = 'INSERT INTO task 
-                (title, description, createdAt, isDone, deadline, priority_id)
-                VALUES (?,?,NOW(),?,?,?)';
-
-        $pdoStatement = $pdo->prepare($sql);
-        $pdoStatement->execute([$title, $description, $isDone, $deadline, $priority]);
+        // Insertion de la tâche en base de données
+        insertTask($title, $description, $isDone, $deadline, $priority);
 
         // Redirection 
         header('Location: index.php');
@@ -65,10 +59,7 @@ if (!empty($_POST)) {
 }
 
 // Sélection des priorités
-$sql = 'SELECT * FROM priority';
-$pdoStatement = $pdo->prepare($sql);
-$pdoStatement->execute();
-$priorities = $pdoStatement->fetchAll();
+$priorities = getAllPriorities();
 
 // Affichage du formulaire : inclusion du fichier de template
-include 'addTask.phtml';
+include 'addTask.phtml'; 
