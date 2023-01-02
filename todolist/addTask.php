@@ -29,9 +29,7 @@ if (!empty($_POST)) {
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
     $priority = $_POST['priority'];
-    $deadline = $_POST['deadline'];
-
-    // @TODO gérer quand pas de date 
+    $deadline = !$_POST['deadline'] ? null : $_POST['deadline'];
 
     // Validation des données
     if (!$title) {
@@ -45,7 +43,7 @@ if (!empty($_POST)) {
      * - est-ce que cet entier correspond bien à une priorité dans la BDD ?
      */ 
 
-    if ($deadline < $today) {
+    if ($deadline != null && $deadline < $today) {
         $errors['deadline'] = 'La deadline doit être dans le futur';
     }
 
