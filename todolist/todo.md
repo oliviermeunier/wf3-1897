@@ -17,4 +17,5 @@ MERCREDI
 JEUDI
 - intégrer le formulaire de création de compte 
 - connexion / déconnexion utilisateur 
+- relation user / task
 - sécurité
