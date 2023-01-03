@@ -4,8 +4,8 @@ MARDI
 - [DONE] page d'accueil avec la liste des tâches
 - [DONE] installer var-dumper avec Composer (gestionnaire de paquets)
 - remplir le formulaire en cas d'erreur
-- voir les sessions
-- ajouter un message flash lors de la création d'une tâche
+- [DONE] voir les sessions
+- [DONE] ajouter un message flash lors de la création d'une tâche
 - factorisation des templates
 - créer des fonctions génériques pour exécuter des requêtes SQL
 
