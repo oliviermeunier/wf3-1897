@@ -27,6 +27,11 @@
                             <a href="addTask.php" class="btn btn-primary">Nouvelle tâche</a>
                         </div>
 
+                        <!-- Affichage du message flash le cas échéant -->
+                        <?php if ($flashMessage): ?>
+                            <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
+                        <?php endif; ?>
+
                         <table class="table text-white mb-0">
                             <thead>
                                 <tr>

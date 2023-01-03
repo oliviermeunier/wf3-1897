@@ -9,7 +9,6 @@ MARDI
 - factorisation des templates
 - créer des fonctions génériques pour exécuter des requêtes SQL
 
-
 MERCREDI
 - créer un front controller et un router (gestion des URLs) + arborescence
 - formulaire de modification d'une tâche

@@ -3,6 +3,9 @@
 // Inclusion de l'autoloader de composer
 require 'vendor/autoload.php';
 
+// Démarrage de la session
+session_start();
+
 // Inclusion des dépendances
 require 'config.php';
 require 'functions.php';
@@ -54,6 +57,9 @@ if (!empty($_POST)) {
 
         // Insertion de la tâche en base de données
         insertTask($title, $description, $isDone, $deadline, $priority);
+
+        // Ajouter un message flash
+        $_SESSION['flashbag'] = 'La tâche "'.$title.'" a bien été créée.';
 
         // Redirection 
         header('Location: index.php');
