@@ -59,7 +59,7 @@ function getAllPriorities(): array
 /**
  * Insert une nouvelle tâche dans la base de données
  */
-function insertTask(string $title, string $description, int $isDone, string $deadline, int $priority): int
+function insertTask(string $title, string $description, int $isDone, ?string $deadline, int $priority): int
 {
     // Création d'une connexion PDO
     $pdo = getPDOConnection();
