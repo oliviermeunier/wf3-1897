@@ -1,5 +1,9 @@
 <?php 
 
+/**
+ * Crée une connexion à la base de données avec PDO
+ * @return PDO l'objet PDO créé
+ */
 function getPDOConnection(): PDO 
 {
     // Connexion à la base de données avec PDO
@@ -32,6 +36,7 @@ function getPDOConnection(): PDO
 
 /**
  * Sélectionne l'ensemble des priorités de la table priority
+ * @return array Le tableau contenant les priorités
  */
 function getAllPriorities(): array
 {
@@ -58,6 +63,11 @@ function getAllPriorities(): array
 
 /**
  * Insert une nouvelle tâche dans la base de données
+ * @param string $title Titre de la tâche
+ * @param string $description Description de la tâche
+ * @param int isDone 0 / 1 La tâche est-elle terminée ?
+ * @param string $deadline La date limite au format yyyy-mm-dd
+ * @param int $priority L'id de la priorité de la tâche
  */
 function insertTask(string $title, string $description, int $isDone, ?string $deadline, int $priority): int
 {
@@ -78,6 +88,7 @@ function insertTask(string $title, string $description, int $isDone, ?string $de
 
 /**
  * Sélectionne la liste de toutes les tâches triées par deadline croissante
+ * @return array Le tableau contenant toutes les tâches
  */
 function getAllTasks(): array 
 {
@@ -108,8 +119,9 @@ function getAllTasks(): array
 
 
 /**
- * Détermine la classe CSS (bootstrap) de la priorité
- * en fonction de son id
+ * Détermine la classe CSS (bootstrap) de la priorité en fonction de son id
+ * @param int $priorityId L'id de la priorité 
+ * @return string La classe CSS correspondant à la priorité
  */
 function getPriorityClass(int $priorityId): string
 {
@@ -152,6 +164,8 @@ function getPriorityClass(int $priorityId): string
  *  - terminée
  *  - en cours
  *  - en retard
+ * @param array $task Le tableau associatif contenant les données de la tâche
+ * @return string Le statut la tâche
  */
 function getTaskStatus(array $task): string 
 {
@@ -173,7 +187,8 @@ function getTaskStatus(array $task): string
 
 /**
  * Formatte une date au format "français"
- * @param string $date : date au format américain ('2023-05-12')
+ * @param null|string $date : date au format américain ('2023-05-12')
+ * @return string La date formattée 
  */
 function dateFormat(?string $date): string 
 {

@@ -1,7 +1,8 @@
 #Todolist de la todolist :)
 
 MARDI 
-- page d'accueil avec la liste des tâches
+- [DONE] page d'accueil avec la liste des tâches
+- installer var-dumper avec Composer
 - remplir le formulaire en cas d'erreur
 - voir les sessions
 - ajouter un message flash lors de la création d'une tâche
