@@ -1,5 +1,8 @@
 <?php 
 
+// Inclusion de l'autoloader de composer
+require 'vendor/autoload.php';
+
 // Inclusion des dépendances
 require 'config.php';
 require 'functions.php';

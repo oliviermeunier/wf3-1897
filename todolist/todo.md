@@ -2,12 +2,13 @@
 
 MARDI 
 - [DONE] page d'accueil avec la liste des tâches
-- installer var-dumper avec Composer
+- [DONE] installer var-dumper avec Composer (gestionnaire de paquets)
 - remplir le formulaire en cas d'erreur
 - voir les sessions
 - ajouter un message flash lors de la création d'une tâche
-- créer des fonctions génériques pour exécuter des requêtes SQL
 - factorisation des templates
+- créer des fonctions génériques pour exécuter des requêtes SQL
+
 
 MERCREDI
 - créer un front controller et un router (gestion des URLs) + arborescence
