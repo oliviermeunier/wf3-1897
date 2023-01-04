@@ -1,15 +1,5 @@
 <?php 
 
-// Inclusion de l'autoloader de composer
-require 'vendor/autoload.php';
-
-// Démarrage de la session
-session_start();
-
-// Inclusion des dépendances
-require 'config.php';
-require 'functions.php';
-
 // Connexion à la base de données
 $pdo = getPDOConnection();
 
@@ -62,7 +52,7 @@ if (!empty($_POST)) {
         addFlash('La tâche "'.$title.'" a bien été créée.');
 
         // Redirection 
-        header('Location: index.php');
+        header('Location: /');
         exit;
     }
 }
@@ -72,4 +62,4 @@ $priorities = getAllPriorities();
 
 // Affichage du formulaire : inclusion du fichier de template
 $template = 'addTask';
-include 'base.phtml'; 
+include '../templates/base.phtml'; 

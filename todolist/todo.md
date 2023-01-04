@@ -9,8 +9,8 @@ MARDI
 
 MERCREDI
 - [DONE] correction fonctions flash messages
-- factorisation des templates
-- créer un front controller et un router (gestion des URLs) + arborescence
+- [DONE] factorisation des templates
+- [DONE] créer un front controller et un router (gestion des URLs) + arborescence
 - formulaire de modification d'une tâche
 - suppression d'une tâche
 - signaler une tâche comme "terminée"
