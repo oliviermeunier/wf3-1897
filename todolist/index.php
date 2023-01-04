@@ -17,4 +17,5 @@ $tasks = getAllTasks();
 $flashMessage = fetchFlash();
 
 // Affichage : inclusion du template
-include 'index.phtml';
+$template = 'index';
+include 'base.phtml';

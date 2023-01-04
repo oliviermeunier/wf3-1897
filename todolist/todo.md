@@ -8,7 +8,7 @@ MARDI
 - [DONE] ajouter un message flash lors de la création d'une tâche
 
 MERCREDI
-- correction fonctions flash messages
+- [DONE] correction fonctions flash messages
 - factorisation des templates
 - créer un front controller et un router (gestion des URLs) + arborescence
 - formulaire de modification d'une tâche

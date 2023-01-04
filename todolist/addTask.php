@@ -71,4 +71,5 @@ if (!empty($_POST)) {
 $priorities = getAllPriorities();
 
 // Affichage du formulaire : inclusion du fichier de template
-include 'addTask.phtml'; 
+$template = 'addTask';
+include 'base.phtml'; 
