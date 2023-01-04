@@ -13,18 +13,8 @@ require 'functions.php';
 // Sélections de la liste des tâches
 $tasks = getAllTasks();
 
-// Initialisation de la variable $flashMessage
-$flashMessage = null;
-
-// Récupération du message flash s'il existe
-if (isset($_SESSION['flashbag'])) {
-    
-    // On récupère le message flash dans une variable
-    $flashMessage = $_SESSION['flashbag'];
-
-    // On efface le message de la session
-    $_SESSION['flashbag'] = null;
-}
+// Récupération du message flash le cas échéant
+$flashMessage = fetchFlash();
 
 // Affichage : inclusion du template
 include 'index.phtml';

@@ -59,7 +59,7 @@ if (!empty($_POST)) {
         insertTask($title, $description, $isDone, $deadline, $priority);
 
         // Ajouter un message flash
-        $_SESSION['flashbag'] = 'La tâche "'.$title.'" a bien été créée.';
+        addFlash('La tâche "'.$title.'" a bien été créée.');
 
         // Redirection 
         header('Location: index.php');
