@@ -49,7 +49,7 @@ if (!empty($_POST)) {
         $errors['password-confirm'] = 'La confirmation du mot de passe doit ne correspond pas';
     }
 
-    if (emailExists($email)) {
+    if (getUserByEmail($email)) {
         $errors['email'] = 'Il existe déjà un compte associé à cette adresse email';
     }
 

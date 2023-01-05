@@ -17,7 +17,8 @@ JEUDI
 - [DONE] formulaire de modification d'une tâche
 - [DONE] suppression d'une tâche
 - [BONUS] signaler une tâche comme "terminée"
-- intégrer le formulaire de création de compte 
+- [DONE]intégrer le formulaire de création de compte 
+- [BONUS] Créer une fonction insertUser() pour insérer un utilisateur (signup)
 - connexion / déconnexion utilisateur 
 - relation user / task
 - sécurité et autorisations

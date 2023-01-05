@@ -39,6 +39,18 @@ $routes = [
         'path' => '/signup',
         'controller' => 'signup.php'
     ],
+
+    // Connexion utilisateur
+    'login' => [
+        'path' => '/login',
+        'controller' => 'login.php'
+    ],
+
+    // Déconnexion
+    'logout' => [
+        'path' => '/logout',
+        'controller' => 'logout.php'
+    ],
 ];
 
 return $routes;

@@ -340,13 +340,13 @@ function fetchFlash(): ?string
     return $flashMessage;
 }
 
-function emailExists(string $email): bool 
+function getUserByEmail(string $email): array 
 {
     // Connexion à la base de données
     $pdo = getPDOConnection();
 
     // Préparation de la requête
-    $sql = 'SELECT id FROM user WHERE email = ?';
+    $sql = 'SELECT * FROM user WHERE email = ?';
     $pdoStatement = $pdo->prepare($sql);
 
     // Exécution de la requête
@@ -355,10 +355,58 @@ function emailExists(string $email): bool
     // Récupération du résultat 
     $user = $pdoStatement->fetch();
 
-    if ($user) {
-        return true;
+    if (!$user) {
+        return [];
     }
-    return false;
+    return $user;
+}
 
-    // return $user ? true : false;
+/**
+ * Vérifie les identifiants de connexion et retourne les données 
+ * de l'utilisateur si les identifiants sont corrects, 
+ * un tableau vide sinon
+ */
+function checkCredentials($email, $password): array
+{
+    // 1°) Récupérer un utilisateur à partir de l'email
+    $user = getUserByEmail($email);
+
+    // Si résultat vide => tableau vide
+    if (!$user) {
+        return [];
+    }
+
+    // 2°) Si l'email existe bien, on vérifie le mot de passe
+    if (!password_verify($password, $user['password'])) {
+        return [];
+    }
+
+    // Si on arrive ici, tout est OK
+    return $user;
+}
+
+/**
+ * Enregistre en session les données de l'utilisateur
+ */
+function registerUser(int $userId, string $email, string $firstname, string $lastname)
+{
+    // On s'assure que la session est bien démarrée
+    initSession();
+
+    $_SESSION['user'] = [
+        'id' => $userId,
+        'email' => $email,
+        'firstname' => $firstname,
+        'lastname' => $lastname
+    ];
+}
+
+/**
+ * Vérifie si l'utilisateur est connexté ou non
+ */
+function isConnected(): bool
+{
+    initSession();
+
+    return array_key_exists('user', $_SESSION) && isset($_SESSION['user']);
 }
