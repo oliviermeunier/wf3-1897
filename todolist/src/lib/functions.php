@@ -85,6 +85,80 @@ function insertTask(string $title, string $description, int $isDone, ?string $de
     return $pdo->lastInsertId();
 }
 
+/**
+ * Modifie une tâche existante dans la base de données
+ * @param string $title Titre de la tâche
+ * @param string $description Description de la tâche
+ * @param string $deadline La date limite au format yyyy-mm-dd
+ * @param int $priority L'id de la priorité de la tâche
+ * @param int $taskId L'id de la tâche à modifier
+ */
+function editTask(string $title, string $description, ?string $deadline, int $priority, int $taskId)
+{
+    // Création d'une connexion PDO
+    $pdo = getPDOConnection();
+
+    // Insertion des données dans la base de données
+    $sql = 'UPDATE task 
+            SET title = ?, description = ?, deadline = ?, priority_id = ?
+            WHERE id = ?';
+
+    $pdoStatement = $pdo->prepare($sql);
+    $pdoStatement->execute([$title, $description, $deadline, $priority, $taskId]);
+}
+
+
+/**
+ * Supprime une tâche à partir de son id
+ * @param int $taskId L'id de la tâche à supprimer
+ */
+function deleteTask(int $taskId)
+{
+    // Création d'une connexion PDO
+    $pdo = getPDOConnection();
+
+    // Préparation de la requête SQL de suppression
+    $sql = 'DELETE FROM task WHERE id = ?';
+
+    $pdoStatement = $pdo->prepare($sql);
+    
+    // Exécution de la requête
+    $pdoStatement->execute([$taskId]);
+}
+
+
+
+/**
+ * Sélectionne une tâche à partir de son id
+ * @param int $taskId L'id de la tâche que je souhaite sélectionner
+ * @return array La tâche sélectionnée
+ */
+function getOneTaskById(int $taskId): array
+{
+    // Création d'une connexion PDO
+    $pdo = getPDOConnection();
+
+    // Préparation de la requête de sélection
+    $sql = 'SELECT title, description, deadline, priority_id 
+            FROM task AS T
+            WHERE T.id = ?';
+
+    $pdoStatement = $pdo->prepare($sql);
+    
+    // Exécution de la requête
+    $pdoStatement->execute([$taskId]);
+
+    // Récupération et retour du résultat de la requête SQL
+    $task = $pdoStatement->fetch();
+
+    if (!$task) {
+        return [];
+    }
+
+    return $task;
+}
+
+
 
 /**
  * Sélectionne la liste de toutes les tâches triées par deadline croissante
@@ -96,7 +170,7 @@ function getAllTasks(): array
     $pdo = getPDOConnection();
 
     // Préparation de la requête de sélection
-    $sql = 'SELECT title, isDone, deadline, label AS priority, P.id AS priority_id 
+    $sql = 'SELECT title, isDone, deadline, label AS priority, P.id AS priority_id, T.id AS task_id 
             FROM task AS T
             INNER JOIN priority AS P
             ON T.priority_id = P.id

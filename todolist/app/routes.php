@@ -20,7 +20,25 @@ $routes = [
     'add-task' => [
         'path' => '/add-task',
         'controller' => 'addTask.php'
-    ]
+    ],
+
+    // Formulaire de modification d'une tâche
+    'edit-task' => [
+        'path' => '/edit-task',
+        'controller' => 'editTask.php'
+    ],
+
+    // Suppression d'une tâche
+    'delete-task' => [
+        'path' => '/delete-task',
+        'controller' => 'deleteTask.php'
+    ],
+
+    // Création de compte
+    'signup' => [
+        'path' => '/signup',
+        'controller' => 'signup.php'
+    ],
 ];
 
 return $routes;

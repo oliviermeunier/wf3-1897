@@ -11,12 +11,12 @@ MERCREDI
 - [DONE] correction fonctions flash messages
 - [DONE] factorisation des templates
 - [DONE] créer un front controller et un router (gestion des URLs) + arborescence
-- formulaire de modification d'une tâche
-- suppression d'une tâche
-- signaler une tâche comme "terminée"
 - [BONUS] créer des fonctions génériques pour exécuter des requêtes SQL
 
 JEUDI
+- [DONE] formulaire de modification d'une tâche
+- [DONE] suppression d'une tâche
+- [BONUS] signaler une tâche comme "terminée"
 - intégrer le formulaire de création de compte 
 - connexion / déconnexion utilisateur 
 - relation user / task
