@@ -14,10 +14,25 @@
 <body>
     <section class="vh-100 gradient-custom-2">
         <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="row d-flex justify-content-center">
                 <div class="col-md-12 col-xl-10">
                     <div class="mask-custom">
                         <div class="card-body p-4 text-white">
+
+                            <nav>
+                                <a href="/" class="btn btn-primary mx-1">
+                                    <i class="fa-solid fa-home"></i>
+                                    Accueil
+                                </a>
+                                <a href="/add-task" class="btn btn-primary mx-1">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Nouvelle tâche
+                                </a>
+                                <a href="/signup" class="btn btn-primary mx-1">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    Créer un compte
+                                </a>
+                            </nav>
 
                             <!-- inclusion du template spécifique à la page affichée -->
                             <?php include '../templates/' . $template . '.phtml';?>
