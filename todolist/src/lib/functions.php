@@ -339,3 +339,26 @@ function fetchFlash(): ?string
 
     return $flashMessage;
 }
+
+function emailExists(string $email): bool 
+{
+    // Connexion à la base de données
+    $pdo = getPDOConnection();
+
+    // Préparation de la requête
+    $sql = 'SELECT id FROM user WHERE email = ?';
+    $pdoStatement = $pdo->prepare($sql);
+
+    // Exécution de la requête
+    $pdoStatement->execute([$email]);
+
+    // Récupération du résultat 
+    $user = $pdoStatement->fetch();
+
+    if ($user) {
+        return true;
+    }
+    return false;
+
+    // return $user ? true : false;
+}
