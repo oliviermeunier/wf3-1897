@@ -49,25 +49,16 @@ if (!empty($_POST)) {
         $errors['password-confirm'] = 'La confirmation du mot de passe doit ne correspond pas';
     }
 
-    if (getUserByEmail($email)) {
+    $userModel = new UserModel();
+    if ($userModel->getUserByEmail($email)) {
         $errors['email'] = 'Il existe déjà un compte associé à cette adresse email';
     }
 
     // Si aucune erreur... 
     if (empty($errors)) {
 
-        // Connexion à la base de données
-        $pdo = getPDOConnection();
-
-        // Hashage du mot de passe
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-
-        // Insertion des données 
-        $sql = 'INSERT INTO user (firstname, lastname, email, password, isSubscribed, createdAt)
-                VALUES (?, ?, ?, ?, ?, NOW())';
-
-        $pdoStatement = $pdo->prepare($sql);
-        $pdoStatement->execute([$firstname, $lastname, $email, $passwordHash, $isSubscribed ? 1 : 0]);
+        // Insertion de l'utilisateur en base de données
+        $userModel->insertUser($firstname, $lastname, $email, $password, $isSubscribed);
 
         // Message flash
         addFlash('Votre compte a bien été créé').

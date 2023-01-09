@@ -1,8 +1,5 @@
 <?php 
 
-// Connexion à la base de données
-$pdo = getPDOConnection();
-
 // Initialisations
 $errors = []; // Tableau qui contiendra les erreurs
 
@@ -46,7 +43,8 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion de la tâche en base de données
-        insertTask($title, $description, $isDone, $deadline, $priority);
+        $taskModel = new TaskModel();
+        $taskModel->insertTask($title, $description, $isDone, $deadline, $priority);
 
         // Ajouter un message flash
         addFlash('La tâche "'.$title.'" a bien été créée.');
@@ -58,7 +56,8 @@ if (!empty($_POST)) {
 }
 
 // Sélection des priorités
-$priorities = getAllPriorities();
+$priorityModel = new PriorityModel();
+$priorities = $priorityModel->getAllPriorities();
 
 // Affichage du formulaire : inclusion du fichier de template
 $template = 'addTask';

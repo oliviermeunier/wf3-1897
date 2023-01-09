@@ -17,6 +17,15 @@ session_start();
 
 // Inclusion des dépendances
 require '../app/config.php';
+
+// Inclusion des fichiers de classes
+require '../src/Core/Database.php';
+require '../src/Core/AbstractModel.php';
+require '../src/Model/TaskModel.php';
+require '../src/Model/PriorityModel.php';
+require '../src/Model/UserModel.php';
+
+// Inclusion du fichier de fonctions
 require '../src/lib/functions.php';
 
 /**

@@ -10,7 +10,8 @@ if (!array_key_exists('id', $_GET) || !ctype_digit($_GET['id'])) {
 $taskId = $_GET['id'];
 
 // Sélection de la tâche à modifier dans la base de données à partir de son id
-$task = getOneTaskById($taskId);
+$taskModel = new TaskModel();
+$task = $taskModel->getOneTaskById($taskId);
 
 // la tâche existe-t-elle bien ?
 if (!$task) {
@@ -19,7 +20,7 @@ if (!$task) {
 }
 
 // Suppression de la tâche
-deleteTask($taskId);
+$taskModel->deleteTask($taskId);
 
 // Message flash
 addFlash('La tâche a bien été supprimée');

@@ -16,7 +16,8 @@ $errors = []; // Tableau qui contiendra les erreurs
 $today = date('Y-m-d');
 
 // Sélection de la tâche à modifier dans la base de données à partir de son id
-$task = getOneTaskById($taskId);
+$taskModel = new TaskModel();
+$task = $taskModel->getOneTaskById($taskId);
 
 // la tâche existe-t-elle bien ?
 if (!$task) {
@@ -61,7 +62,7 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion de la tâche en base de données
-        editTask($title, $description, $deadline, $priority, $taskId);
+        $taskModel->editTask($title, $description, $deadline, $priority, $taskId);
 
         // Ajouter un message flash
         addFlash('La tâche a bien été modifiée.');
@@ -73,7 +74,11 @@ if (!empty($_POST)) {
 }
 
 // Sélection des priorités
-$priorities = getAllPriorities();
+$priorityModel = new PriorityModel();
+$priorities = $priorityModel->getAllPriorities();
+
+// Affichage du nombre d'instances de PDO
+// dump(AbstractModel::getCountPDO());
 
 // Affichage du formulaire : inclusion du fichier de template
 $template = 'editTask';
