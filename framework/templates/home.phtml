@@ -1,0 +1,10 @@
+<div class="text-center pt-3 pb-2">
+    <img src="img/check.webp" alt="Check" width="60">
+    <h2 class="my-4">Accueil</h2>
+</div>
+
+<!-- Affichage du message flash le cas échéant -->
+<?php if ($flashMessage): ?>
+    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
+<?php endif; ?>
+

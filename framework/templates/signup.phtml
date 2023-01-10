@@ -1,0 +1,46 @@
+<div class="text-center pt-3 pb-2">
+    <img src="img/check.webp" alt="Check" width="60">
+    <h2 class="my-4">Créez un compte</h2>
+</div>
+
+<form action="/signup" method="POST" >
+    <fieldset>
+        <legend>Créez votre compte</legend>
+        <div class="mb-3">
+            <label for="firstname">Prénom</label>
+            <input class="form-control" type="text" name="firstname" id="firstname" value="<?=htmlspecialchars($firstname);?>">
+            <?php if (isset($errors['firstname'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['firstname']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="lastname">Nom</label>
+            <input class="form-control" type="text" name="lastname" id="lastname" value="<?=htmlspecialchars($lastname);?>">
+            <?php if (isset($errors['lastname'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['lastname']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input class="form-control" type="text" name="email" id="email" value="<?=htmlspecialchars($email);?>">
+            <?php if (isset($errors['email'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['email']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="password">Mot de passe</label>
+            <input class="form-control" type="password" name="password" id="password">
+            <?php if (isset($errors['password'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['password']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="password-confirm">Mot de passe (confirmation)</label>
+            <input class="form-control" type="password" name="password-confirm" id="password-confirm">
+            <?php if (isset($errors['password-confirm'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['password-confirm']);?></p>
+            <?php endif; ?>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Valider">
+    </fieldset>
+</form>
