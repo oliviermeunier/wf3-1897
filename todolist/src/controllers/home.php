@@ -1,5 +1,8 @@
 <?php 
 
+// Import de classes
+use App\Model\TaskModel;
+
 // Création d'un objet TaskModel
 $taskModel = new TaskModel();
 

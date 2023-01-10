@@ -1,5 +1,9 @@
 <?php 
 
+// Import de classes
+use App\Model\PriorityModel;
+use App\Model\TaskModel;
+
 // Initialisations
 $errors = []; // Tableau qui contiendra les erreurs
 

@@ -1,5 +1,11 @@
 <?php 
 
+// Définition du namespace
+namespace App\Model;
+
+// Import des classes
+use App\Core\AbstractModel;
+
 class UserModel extends AbstractModel {
 
     function getUserByEmail(string $email): array 

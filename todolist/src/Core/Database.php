@@ -1,5 +1,12 @@
 <?php 
 
+// Définition du namespace
+namespace App\Core;
+
+// Import des classes
+use PDO;
+use PDOException;
+
 class Database {
 
     // Ici je suis à l'intérieur de ma classe

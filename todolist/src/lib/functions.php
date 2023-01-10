@@ -158,7 +158,7 @@ function fetchFlash(): ?string
 function checkCredentials($email, $password): array
 {
     // 1°) Récupérer un utilisateur à partir de l'email
-    $userModel = new UserModel();
+    $userModel = new App\Model\UserModel();
     $user = $userModel->getUserByEmail($email);
 
     // Si résultat vide => tableau vide

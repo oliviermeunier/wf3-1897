@@ -1,5 +1,12 @@
 <?php 
 
+// Dans quel espace de nom (namespace) je travaille ?
+// Chemin des dossiers : src/Core
+namespace App\Core;
+
+// Import des classes
+use PDO;
+
 /**
  * Je définie ma classe Model comme "abstraite" 
  * Je ne vais pas l'utiliser directement, on va pas créer d'objet Model

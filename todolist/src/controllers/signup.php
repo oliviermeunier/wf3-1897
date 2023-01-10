@@ -1,5 +1,8 @@
 <?php
 
+// Import de classes
+use App\Model\UserModel;
+
 // Initialisations
 const PASSWORD_MIN_LENGTH = 8; // Longueur minimale du mot de passe
 

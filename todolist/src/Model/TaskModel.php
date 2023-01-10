@@ -1,5 +1,12 @@
 <?php 
 
+// Définition du namespace
+namespace App\Model;
+
+// Import des classes
+use App\Core\AbstractModel;
+
+// Définition de la classe TaskModel
 class TaskModel extends AbstractModel {
 
     /**
