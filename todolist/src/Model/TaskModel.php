@@ -6,6 +6,7 @@ namespace App\Model;
 // Import des classes
 use App\Core\AbstractModel;
 use App\Entity\Task;
+use App\Entity\Priority;
 
 // Définition de la classe TaskModel
 class TaskModel extends AbstractModel {
@@ -44,6 +45,12 @@ class TaskModel extends AbstractModel {
         // On parcours les résultats, pour chaque tâche (tableau associatif)...
         foreach ($results as $result) {
 
+            // Création de l'objet Priority
+            $priority = new Priority(
+                $result['priority_id'],
+                $result['priority']
+            );
+
             // ... on instancie la classe Task
             $task = new Task(
                 $result['task_id'],
@@ -52,7 +59,7 @@ class TaskModel extends AbstractModel {
                 $result['createdAt'],
                 $result['isDone'],
                 $result['deadline'],
-                $result['priority_id']
+                $priority
             );
 
             // On ajoute l'objet Task dans le tableau de tâches

@@ -15,3 +15,4 @@ BONUS
 - classe FlashBag pour gérer les messages flash
 - classes de contrôleur
 - classes pour les routes et le router
+- créer la classe d'entité User et faire tous les changements en conséquence

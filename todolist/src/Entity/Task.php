@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Priority;
+
 class Task {
 
     // VERSION PHP8 !! Si tous les types de données sont identiques
@@ -27,7 +29,7 @@ class Task {
     private \DateTimeImmutable $createdAt;
     private bool $isDone;
     private ?\DateTimeImmutable $deadline;
-    private int $priorityId;
+    private Priority $priority;
 
     /**
      * Constructeur
@@ -39,7 +41,7 @@ class Task {
         string $createdAt,
         bool $isDone,
         ?string $deadline,
-        int $priorityId
+        Priority $priority
     )
     {
         $this->id = $id;
@@ -48,7 +50,7 @@ class Task {
         $this->createdAt = new \DateTimeImmutable($createdAt);
         $this->isDone = $isDone;
         $this->deadline = $deadline == null ? null : new \DateTimeImmutable($deadline);
-        $this->priorityId = $priorityId;
+        $this->priority = $priority;
     }
 
 
@@ -59,7 +61,7 @@ class Task {
      */
     function getPriorityClass(): string
     {
-        return match($this->priorityId) {
+        return match($this->priority->getId()) {
             1 => 'bg-success',
             2 => 'bg-warning',
             3 => 'bg-danger'
@@ -227,21 +229,21 @@ class Task {
     }
 
     /**
-     * Get the value of priorityId
+     * Get the value of priority
      */ 
-    public function getPriorityId(): int
+    public function getPriority(): Priority
     {
-        return $this->priorityId;
+        return $this->priority;
     }
 
     /**
-     * Set the value of priorityId
+     * Set the value of priority
      *
      * @return  self
      */ 
-    public function setPriorityId(int $priorityId): self
+    public function setPriority(Priority $priority): self
     {
-        $this->priorityId = $priorityId;
+        $this->priority = $priority;
 
         return $this;
     }

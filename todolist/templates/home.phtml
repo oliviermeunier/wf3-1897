@@ -27,7 +27,7 @@
                 <td class="align-middle">
                     <h6 class="mb-0">
                         <span class="badge <?=$task->getPriorityClass();?>">
-                            <?=htmlspecialchars('@TODO priority');?>
+                            <?=htmlspecialchars($task->getPriority()->getLabel());?>
                         </span>
                     </h6>
                 </td>
