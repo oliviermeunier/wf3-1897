@@ -34,10 +34,7 @@ abstract class AbstractModel {
     {
         if (self::$pdo == null) {
 
-            // Création d'un objet de la classe Database
-            // $database = new Database();
-
-            // Appel de la méthode getPDOConnection() sur cet objet
+            // Appel de la méthode statique getPDOCOnnection directement sur la classe Database pour créer l'objet PDO
             self::$pdo = Database::getPDOConnection();
 
             // self fait référence à la classe courante

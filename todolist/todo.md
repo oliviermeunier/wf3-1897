@@ -1,9 +1,10 @@
 #Todolist de la todolist :)
 
-- abstraction
-- static
+- [DONE] abstraction
+- [DONE] static
 - namespaces
 - autoloader
+- entités
 
 BONUS
 - relation user / task
