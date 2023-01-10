@@ -5,6 +5,7 @@ namespace App\Model;
 
 // Import des classes
 use App\Core\AbstractModel;
+use App\Entity\Task;
 
 // Définition de la classe TaskModel
 class TaskModel extends AbstractModel {
@@ -16,7 +17,7 @@ class TaskModel extends AbstractModel {
     function getAllTasks(): array 
     {
         // Préparation de la requête de sélection
-        $sql = 'SELECT title, isDone, deadline, label AS priority, P.id AS priority_id, T.id AS task_id 
+        $sql = 'SELECT title, isDone, deadline, label AS priority, P.id AS priority_id, T.id AS task_id, createdAt, description 
                 FROM task AS T
                 INNER JOIN priority AS P
                 ON T.priority_id = P.id
@@ -28,12 +29,37 @@ class TaskModel extends AbstractModel {
         $pdoStatement->execute();
 
         // Récupération et retour des résultats de la requête SQL
-        $tasks = $pdoStatement->fetchAll();
+        $results = $pdoStatement->fetchAll();
 
-        if (!$tasks) {
+        if (!$results) {
             return [];
         }
 
+        ///////////////////////////////////////////////////////////////
+        // Création des objets Task à partir du tableau de résultats
+
+        // Création d'un tableau pour stocker les objets Task
+        $tasks = [];
+
+        // On parcours les résultats, pour chaque tâche (tableau associatif)...
+        foreach ($results as $result) {
+
+            // ... on instancie la classe Task
+            $task = new Task(
+                $result['task_id'],
+                $result['title'],
+                $result['description'],
+                $result['createdAt'],
+                $result['isDone'],
+                $result['deadline'],
+                $result['priority_id']
+            );
+
+            // On ajoute l'objet Task dans le tableau de tâches
+            $tasks[] = $task;
+        }
+
+        // On retourne le tableau de tâches
         return $tasks;
     }
 

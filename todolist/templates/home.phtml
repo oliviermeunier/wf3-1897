@@ -22,27 +22,27 @@
         <?php foreach ($tasks as $task): ?>
             <tr class="fw-normal">
                 <td class="align-middle">
-                    <span><?=htmlspecialchars($task['title']);?></span>
+                    <span><?=htmlspecialchars($task->getTitle());?></span>
                 </td>
                 <td class="align-middle">
                     <h6 class="mb-0">
-                        <span class="badge <?=getPriorityClass($task['priority_id']);?>">
-                            <?=htmlspecialchars($task['priority']);?>
+                        <span class="badge <?=$task->getPriorityClass();?>">
+                            <?=htmlspecialchars('@TODO priority');?>
                         </span>
                     </h6>
                 </td>
                 <td class="align-middle">
-                    <span><?=getTaskStatus($task);?></span>
+                    <span><?=htmlspecialchars($task->getStatus());?></span>
                 </td>
                 <td class="align-middle">
-                    <span><?=dateFormat($task['deadline'])?></span>
+                    <span><?=$task->getFormattedDeadline();?></span>
                 </td>
                 <td class="align-middle">
-                    <a href="/edit-task?id=<?=intval($task['task_id']);?>" data-mdb-toggle="tooltip" title="Edit">
+                    <a href="/edit-task?id=<?=intval($task->getId());?>" data-mdb-toggle="tooltip" title="Edit">
                         <i class="fa-solid fa-pen-to-square fa-lg text-primary me-3"></i>
                     </a>
                     <a href="#!" data-mdb-toggle="tooltip" title="Done"><i class="fas fa-check fa-lg text-success me-3"></i></a>
-                    <a href="/delete-task?id=<?=intval($task['task_id']);?>" data-mdb-toggle="tooltip" title="Remove">
+                    <a href="/delete-task?id=<?=intval($task->getId());?>" data-mdb-toggle="tooltip" title="Remove">
                         <i class="fas fa-trash-alt fa-lg text-warning"></i>
                     </a>
                 </td>
