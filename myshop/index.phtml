@@ -1,0 +1,14 @@
+<?php include 'header.phtml'; ?>
+
+    <main>
+        <?php foreach ($products as $product): ?>
+            <article>
+                <h3><?=htmlspecialchars(strtoupper($product['title']));?></h3>
+                <p><?=htmlspecialchars(mb_substr($product['description'], 0, 100));?></p>
+                <p><?=number_format($product['price']/100, 2, ',');?> €</p>
+                <p><?= htmlspecialchars($product['postal_code']);?> <?= htmlspecialchars($product['city']);?></p>
+            </article>
+        <?php endforeach; ?>
+    </main>
+</body>
+</html>

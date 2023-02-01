@@ -1,0 +1,29 @@
+<?php include 'header.phtml'; ?>
+
+    <main>
+        <article>
+            <h3><?=htmlspecialchars(strtoupper($product['title']));?></h3>
+            <p><?=htmlspecialchars($product['description']);?></p>
+            <p><?=number_format($product['price']/100, 2, ',');?> €</p>
+            <p><?= htmlspecialchars($product['postal_code']);?> <?= htmlspecialchars($product['city']);?></p>
+        </article>
+
+        <section>
+            <h2>Réservation du produit</h2>
+
+            <?php if($product['reservation_text']): ?>
+                <h4>Produit réservé</h4>
+                <p><?=htmlspecialchars($product['reservation_text']);?></p>
+            <?php else: ?>
+                <form action="product.php?id=<?=intval($productId);?>" method="POST">
+                    <div>
+                        <label for="message">Message de réservation</label>
+                        <textarea name="message" id="message"></textarea>
+                    </div>
+                    <input type="submit" value="Je réserve !">
+                </form>
+            <?php endif; ?>
+        </section>
+    </main>
+</body>
+</html>

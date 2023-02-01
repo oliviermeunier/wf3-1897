@@ -1,0 +1,29 @@
+<?php include 'header.phtml'; ?>
+
+    <main>
+        <form action="add-product.php" method="POST">
+            <div>
+                <label for="title">Titre du produit</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea name="description" id="description"></textarea>
+            </div>
+            <div>
+                <label for="price">Prix du produit</label>
+                <input type="number" id="price" name="price" min="0" step=".01">
+            </div>
+            <div>
+                <label for="city">Ville</label>
+                <input type="text" id="city" name="city">
+            </div>
+            <div>
+                <label for="postal-code">Code postal</label>
+                <input type="text" id="postal-code" name="postal-code">
+            </div>
+            <input type="submit" value="Enregistrer">
+        </form>
+    </main>
+</body>
+</html>
