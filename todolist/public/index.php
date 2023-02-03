@@ -54,9 +54,13 @@ require '../src/lib/functions.php';
 $routes = require '../app/routes.php';
 
 // On récupère le path de l'URL
+// $path = '/';
+// if (array_key_exists('PATH_INFO', $_SERVER)) {
+//     $path = $_SERVER['PATH_INFO'];
+// } 
 $path = '/';
-if (array_key_exists('PATH_INFO', $_SERVER)) {
-    $path = $_SERVER['PATH_INFO'];
+if (array_key_exists('REQUEST_URI', $_SERVER)) {
+    $path = explode('?',$_SERVER['REQUEST_URI'])[0];
 } 
 
 // On va chercher la route correspondant à la page sur laquelle on se trouve
