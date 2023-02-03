@@ -1,0 +1,20 @@
+html, body {
+    height: 100%;
+    background-color: lightgreen;
+    position: relative;
+}
+
+div.container {
+    position: relative;
+    background-color: lightblue;
+    height: calc(100% - 10rem);
+    margin-top: 10rem;
+}
+
+header {
+    text-align: center;
+}
+
+#search-city-form {
+    width: 400px;
+}
