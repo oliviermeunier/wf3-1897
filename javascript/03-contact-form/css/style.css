@@ -1,0 +1,11 @@
+.hidden {
+    display:none;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: crimson;
+}
